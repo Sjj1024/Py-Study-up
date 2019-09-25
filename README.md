@@ -31,3 +31,21 @@ Bandwidth [MHz]	carrierBandwidth	Range		Carrier centre	Carrier centre	point A	ab
 			Mid	1950	390000	1849.74	369948	504		-	-	-	-	-	-
 			High	1970	394000	1959.38	391876	6		-	-	-	-	-	-
 Note 1: The CORESET#0 Index and the associated CORESET#0 Offset refers to Table 13-1 in TS 38.213 [22]. The value of CORESET#0 Index is signalled in the four most significant bits of the IE pdcch-ConfigSIB1 in the MIB. The offsetToPointA IE is expressed in units of resource blocks assuming 15 kHz subcarrier spacing for FR1 and 60 kHz subcarrier spacing for FR2.															
+
+
+表格二：
+Bandwidth [MHz]	carrierBandwidth	Range		Carrier centre	Carrier centre	point A	absoluteFrequencyPointA	offsetToCarrier [Carrier PRBs]	SS block SCS	GSCN	absoluteFrequencySSB		CORESET#0 Offset	CORESET#0 Index	offsetToPointA
+	[PRBs]			[MHz]	[ARFCN]	[MHz]	[ARFCN]		[kHz]		[ARFCN]		[RBs]	Note 1	(SIB1)
+													Note 1		[PRBs]
+															Note 1
+10	24	Downlink	Low	2575	515000	2570.68	514136	0	15	6439	515090	6	8	3	16
+		&	Mid	2595	519000	2553.96	510792	102		6486	518910	18	5	0	214
+		Uplink	High	2615	523000	2429.24	485848	504		6536	522970	14	6	1	1020
+15	38	Downlink	Low	2577.5	515500	2570.66	514132	0	15	6437	515050	18	7	2	14
+		&	Mid	2595	519000	2551.44	510288	102		6480	518430	2	6	1	216
+		Uplink	High	2612.5	522500	2424.22	484844	504		6526	522050	18	7	2	1022
+20	51	Downlink	Low	2580	516000	2570.82	514164	0	15	6438	515070	14	7	2	14
+		&	Mid	2595	519000	2549.1	509820	102		6474	517950	22	5	0	214
+		Uplink	High	2610	522000	2419.38	483876	504		6513	521070	14	7	2	1022
+"Note 1: The CORESET#0 Index and the associated CORESET#0 Offset refers to Table 13-2 in TS 38.213 [22]. The value of CORESET#0 Index is signalled in the four most significant bits of the IE pdcch-ConfigSIB1 in the MIB. The offsetToPointA IE is expressed in units of resource blocks assuming 15 kHz subcarrier spacing for FR1 and 60 kHz subcarrier spacing for FR2."															
+
