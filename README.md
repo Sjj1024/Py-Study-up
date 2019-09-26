@@ -74,3 +74,12 @@ Bandwidth [MHz]	carrierBandwidth	Range		Carrier centre	Carrier centre	point A	ab
 26 [20, 106, 'Uplink', 'Low', 1930, 386000, 1920.46, 384092, 0, '-', '-', '-', '-', '-', '-', '-']
 27 [20, 106, 'Uplink', 'Mid', 1950, 390000, 1849.74, 369948, 504, '-', '-', '-', '-', '-', '-', '-']
 28 [20, 106, 'Uplink', 'High', 1970, 394000, 1959.38, 391876, 6, '-', '-', '-', '-', '-', '-', '-']
+
+
+
+这个表名字中提取	这是表名字中提取	不判断，后期手工处理			保存的时候处理										没有的字段使用-保存处理			
+band 	scs	ul-bandwidth [MHz]	dl-bandwidth [MHz]	carrierBandwidth[PRBs]	Duplex	FreqPos	Carrier centre [MHz]	Carrier centre [ARFCN]	point A [MHz]	absoluteFrequencyPointA [ARFCN]	offsetToCarrier [Carrier PRBs]	SS block SCS [kHz]	GSCN	absoluteFrequencySSB [ARFCN]	KSSB	CORESET#0 Offset [RBs]Note 1	CORESET#0 Index Note 1 	offsetToPointA (SIB1) [PRBs] Note 1
+N3	30	10	10	24	Downlink	Low	874	174800	869.68	173936	0	30	2185	174770	14	1	1	2
+N3	30	10	10	11	Downlink	Mid	1810	362000	1806.04	361208	0	15	4520	361690	-	-	-	-
+N3	30	10	10	24	Downlink	High	874	174800	869.68	173936	0	30	2185	174770	14	1	1	2
+
