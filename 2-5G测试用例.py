@@ -89,7 +89,5 @@ for key, value in sheet_value_dict.items():
                     ("{key}", "{start.group(2)}", "MID", "{value[7]}", "{value[13]}", "{value[19]}", "{value[25]}", "{value[10]}", "{value[16]}",  "{value[22]}", "0" ),
                     ("{key}", "{start.group(2)}", "HIGH", "{value[8]}", "{value[14]}", "{value[20]}", "{value[26]}", "{value[11]}", "{value[17]}",  "{value[23]}", "0" ),
                     """
-    # 添加上换行符
-    str_template += ""
 print(str_template)
 print(55555555555555555555555555555555)
