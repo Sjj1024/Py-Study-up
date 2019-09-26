@@ -7,7 +7,7 @@ print(len(wb.sheetnames))
 # 获取到所有表的名字,是一个列表
 print(wb.sheetnames)
 # 通过表名字获取指定表
-sheet_name = "N15_15kHz"
+sheet_name = "N1_15kHz"
 sheet = wb[sheet_name]
 # 输出表的最大行和最大列
 print(sheet.max_row)
@@ -82,11 +82,14 @@ print(sheet_value_dict)
 start = re.match(r'N(\d*)_(\d*)kHz', sheet_name)
 title_str = f"""String [][] n{start.group(1)} = new String[][] (
                 // n{start.group(1)}-{start.group(2)}"""
+str_template = ""
 for key, value in sheet_value_dict.items():
-    str_template = f"""
+    str_template += f"""
                     ("{key}", "{start.group(2)}", "LOW", "{value[6]}", "{value[12]}", "{value[18]}", "{value[24]}", "{value[9]}", "{value[15]}",  "{value[21]}", "0" ),
                     ("{key}", "{start.group(2)}", "MID", "{value[7]}", "{value[13]}", "{value[19]}", "{value[25]}", "{value[10]}", "{value[16]}",  "{value[22]}", "0" ),
                     ("{key}", "{start.group(2)}", "HIGH", "{value[8]}", "{value[14]}", "{value[20]}", "{value[26]}", "{value[11]}", "{value[17]}",  "{value[23]}", "0" ),
                     """
-    print(str_template)
-    print(55555555555555555555555555555555)
+    # 添加上换行符
+    str_template += ""
+print(str_template)
+print(55555555555555555555555555555555)
