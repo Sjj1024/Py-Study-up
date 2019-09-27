@@ -1,6 +1,7 @@
 from openpyxl import load_workbook
 from openpyxl import Workbook
 import re
+import copy
 
 """
 将5G表格转换成需要的格式，然后存储成ecxel表格
@@ -16,9 +17,7 @@ class GnrcChannel(object):
         self.gnrc_sheets = self.wb1.sheetnames
 
     # 读取原始表格中的数据，并返回字典，
-    def get_info_gnrc(self):
-        # 通过表名字获取指定表
-        sheet_name = "N1_15kHz"
+    def get_info_gnrc(self, sheet_name):
         sheet = self.wb1[sheet_name]
         # 输出表的最大行和最大列
         print(sheet.max_row)
@@ -51,53 +50,88 @@ class GnrcChannel(object):
         for i in sheet['C']:
             c_value_list.append(i.value)
         # 找到需要的数据，以列的形式保存到字典中，键是列中有效数字
-        sheet_value_dict = dict()
+        sheet_value_dict = []
         # 遍历行,获取到Down系列的值
         for row, val in num_value_list:  # 里面每个元素表示数字一行系列，元祖（row行号，值）
             # 遍历列
             data_value_list = []  # 保存一系列数据中列的值
             for col, word in word_value_list:  # 每个元素表示一列，元祖（col字母列号和值）
                 # 符号不在其中的话，说明有up列的数据，所以需要再获取up的数据，
-                if "&" not in c_value_list:
-                    # print("&&&&&&&&&&不在其中")
-                    # 遍历列号，获取到有效行中每一列的值，如果获取到的值为None，则取上一行的值
-                    if sheet[col + str(int(row))].value is None:
-                        sheet[col + str(int(row))].value = sheet[col + str(int(row)-1)].value
+                if sheet[col + str(int(row))].value is None:
+                    sheet[col + str(int(row))].value = sheet[col + str(int(row) - 1)].value
                     # 将获取到的行值保存到一个列表中，表示一行数据
-                    data_value_list.append(sheet[col + str(int(row))].value)
-                    # print(sheet[col + str(int(row))].value, end=",")  # 这里只表示一个单元格的值，遍历完才表示一行的数据
+                data_value_list.append(sheet[col + str(int(row))].value)
+                # print(sheet[col + str(int(row))].value, end=",")  # 这里只表示一个单元格的值，遍历完才表示一行的数据
+            if "&" in c_value_list:
+                # 否则的话说明&在，需要将&替换成Downlink，并且遇到Uplink存在的行的时候，将Uplink替换成Downlink，然后后三项拼接到结尾，并将Downlink替换成Uplink
+                if "&" in data_value_list:
+                    data_value_list[2] = "Downlink"
+                    sheet_value_dict.append(data_value_list)
+                elif "Uplink" in data_value_list:
+                    data_value_list[2] = "Downlink"
+                    sheet_value_dict.append(data_value_list)
+                    add_Uplink_list = copy.deepcopy(sheet_value_dict[-3:])
+                    for x in add_Uplink_list:
+                        x[2] = "Uplink"
+                    sheet_value_dict.extend(add_Uplink_list)
                 else:
-                    # 否则的话说明&在，就只需要从down中拼接up的数据
-                    print("&&&&&&&&&&在其中")
-                    # 遍历行实现加一行操作
-                    print(sheet[col + row].value)
-            sheet_value_dict[row] = data_value_list
+                    sheet_value_dict.append(data_value_list)
+            else:
+                sheet_value_dict.append(data_value_list)
         # print(sheet_value_dict)
-        for key, value in sheet_value_dict.items():
-            print(key, value)
+        # for value in sheet_value_dict:
+        #     print(value)
+        return sheet_value_dict
+
     # 清洗原始表格中的数据，返回需要的样式数据
-    def wash_info_gnrc(self):
-        pass
+    def wash_info_gnrc(self, sheet_name, sheet_value_list):
+        # 获取band和scs和ul，dl的值，插入到每一行数据的开头
+        re_com = re.compile(r'(\w\d*)_(\d*)kHz').match(sheet_name)
+        band = re_com.group(1)
+        scs = re_com.group(2)
+        for row in sheet_value_list:
+            ul_bandwidth = row[0]
+            dl_bandwidth = row[0]
+            row.insert(0, dl_bandwidth)
+            # row.insert(0, ul_bandwidth)
+            row.insert(0, scs)
+            row.insert(0, band)
+            print(row)
+        return sheet_value_list
 
     # 保存成新表格样式表
-    def save_new_sheet(self):
-        pass
+    def save_new_sheet(self, sheet_name, clean_sheet_value):
+        sheet = self.wb2.create_sheet(sheet_name)
+        tit_list = ['band ', 'scs', 'ul-bandwidth [MHz]', 'dl-bandwidth [MHz]', 'carrierBandwidth[PRBs]', 'Duplex',
+                    'FreqPos', 'Carrier centre [MHz]', 'Carrier centre [ARFCN]', 'point A [MHz]',
+                    'absoluteFrequencyPointA [ARFCN]', 'offsetToCarrier [Carrier PRBs]', 'SS block SCS [kHz]', 'GSCN',
+                    'absoluteFrequencySSB [ARFCN]', 'KSSB', 'CORESET#0 Offset [RBs]Note 1', 'CORESET#0 Index Note 1 ',
+                    'offsetToPointA (SIB1) [PRBs] Note 1']
+        sheet.append(tit_list)
+        for row in clean_sheet_value:
+            sheet.append(row)
+        return sheet
 
     # 保存excel表格
-    def save_excel(self):
-        pass
+    def save_excel(self, wb):
+        wb.save("5G目标文件.xlsx")
 
     # 主程序
     def run(self):
-        # 获取原始表格信息
-        self.get_info_gnrc()
-        # 清洗数据
-
-        # 保存表信息到表中
-
-        # 保存表格到指定文件
-
-        pass
+        # gnrc_sheets 保存的所有sheet名字
+        for sheet_name in self.gnrc_sheets:
+            # 通过表名字获取指定表
+            # sheet_name = "N38_15kHz"
+            print(f'开始读取表{sheet_name}--------------------')
+            # 获取原始表格信息
+            sheet_value_list = self.get_info_gnrc(sheet_name)
+            # 清洗数据
+            clean_sheet_value = self.wash_info_gnrc(sheet_name, sheet_value_list)
+            # 保存表信息到表中
+            self.save_new_sheet(sheet_name, clean_sheet_value)
+            # 保存表格到指定文件
+            self.save_excel(self.wb2)
+            print(f'读取结束了{sheet_name}--------------------')
 
 
 if __name__ == '__main__':
