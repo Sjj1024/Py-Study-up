@@ -118,7 +118,6 @@ class GnrcChannel(object):
 
     # 主程序
     def run(self):
-        # gnrc_sheets 保存的所有sheet名字
         for sheet_name in self.gnrc_sheets:
             # 通过表名字获取指定表
             # sheet_name = "N38_15kHz"
