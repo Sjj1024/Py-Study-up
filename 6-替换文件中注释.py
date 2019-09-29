@@ -23,14 +23,21 @@ def get1_path_py(file_py_list, path):
         for i in filename:
             # print(os.path.join(root, i))
             file_py_list.append(os.path.join(root, i))
+    # 剔除本文件的路径
+    for x in file_py_list:
+        if os.path.relpath(__file__) in x:
+            file_py_list.pop(file_py_list.index(x))
+    # 打印出要遍历的文件列表路径
+    print(f"要遍历的文件路径列表是{file_py_list}")
 
 
 def content_file(file_name):
     # 获取文件的内容，并替换掉匹配到的内容
+    print(f"开始处理的文件{file_name}----------->")
     file = open(file_name, "r+", encoding="utf-8")
     re_obj = re.compile(r'# .*')
     contents = file.readlines()
-    print(contents)
+    # print(contents)
     # 记录下纯注释行的元素列表
     pop_parms = []
     rep_str = []
@@ -43,29 +50,28 @@ def content_file(file_name):
             if not row.strip().startswith("#"):
                 new_str = re_obj.sub('', row)
                 rep_str.append((row, new_str))
-    print([(i, y) for i, y in enumerate(contents)])
-    print(pop_parms)
     # 遍历记录的纯注释行和有注释的行，然后替换
     for i in pop_parms:
         contents.pop(contents.index(i))
     for row, new in rep_str:
         contents[contents.index(row)] = new
-    print(111111111111)
-    print(contents)
+    # 先关闭打开的文件，再重新保存没有注释的文件
     file.close()
     # 将替换后的没有注释的内容保存到新文件中
     with open(file_name, "w+", encoding="utf-8") as f:
         f.writelines(contents)
+    print(f"处理完成的文件{file_name}***********>")
 
 
 if __name__ == '__main__':
     # 获取到py文件的路径[.py 路径]
     file_py_list = []
-    path = 'D:\Pyup_study\Py精巧文件'
-    get1_path_py(file_py_list, path)
-    print(file_py_list)
-    # 遍历py文件，获取到文件中的内容
-    content_file("D:\Pyup_study\Py精巧文件\文件.py")
-
-    # 保存文件
-    pass
+    root_path = os.path.dirname(__file__)
+    print(11111111111111)
+    print(os.path.dirname(__file__))
+    # 遍历要处理的文件
+    get1_path_py(file_py_list, root_path)
+    # 遍历py文件，处理文件中的内容
+    for path in file_py_list:
+        content_file(path)
+    print(f"处理完成了{len(file_py_list)}个文件=========>")
