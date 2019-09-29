@@ -1,0 +1,26 @@
+import pandas as pd
+
+data = pd.read_excel("5G.xlsx")
+# 读文件需要使用xlrd包配合使用，安装pip install xlrd，不然会报错
+print(data.shape)  # 打印多少行和列
+print(data.columns)  # 打印所有列的头信息
+print(data.head(8))  # 打印出头数据，默认5行
+print(data.tail(3))  # 看末尾，尾巴数据，默认也是5行
+# print(data)  # 有问题待解决
+print(111111111111111)
+# 有比较脏的head的时候，需要添加一个head=行号，再读取，如果是空行的话，会自动跳过去，只要有一个地方是脏的，就需要设置head
+
+# 没有head的数据，可以设置head=None，会默认设置列头为阿拉伯数字，也可以设置头信息
+data.columns = ['band', 'scs', 'Duplex', 'FreqPos', 'absoluteFrequencySSB [ARFCN]', 'KSSB']
+# data = data.set_index("band")
+# 或者使用这种方式修改头信息
+data.set_index("band", inplace=True)
+# 设置完行和列头信息后，会自动加粗显示
+data.to_excel("5G2.xlsx")
+print(data.columns)  # 不显示id的列
+print("Done")
+
+# 在读取文件的时候，知道那一列是id的话， 就可以指定index_col = "band"，就不会再读取的id了
+data2 = pd.read_excel("5G2.xlsx", index_col="band")
+print(data2.columns)
+
