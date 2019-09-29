@@ -48,7 +48,7 @@ def content_file(file_name):
         # 判断一行既有代码又有注释的行
         elif "# " in row and re.search(r'[a-z]', row):
             if not row.strip().startswith("#"):
-                new_str = re_obj.sub('', row)
+                new_str = re.sub(r"\s\s#\s.*", '', row)
                 rep_str.append((row, new_str))
     # 遍历记录的纯注释行和有注释的行，然后替换
     for i in pop_parms:
@@ -67,10 +67,9 @@ if __name__ == '__main__':
     # 获取到py文件的路径[.py 路径]
     file_py_list = []
     root_path = os.path.dirname(__file__)
-    print(11111111111111)
-    print(os.path.dirname(__file__))
     # 遍历要处理的文件
     get1_path_py(file_py_list, root_path)
+    print(f"一共有{len(file_py_list)}个文件==========>")
     # 遍历py文件，处理文件中的内容
     for path in file_py_list:
         content_file(path)
