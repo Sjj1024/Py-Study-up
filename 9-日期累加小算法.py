@@ -10,7 +10,6 @@ def add_time(d, md):
         mt = mt % 12
     return date(d.year + y, mt, d.day)
 
-
 start = date(2019, 9, 10)
 
 for i in range(10):
