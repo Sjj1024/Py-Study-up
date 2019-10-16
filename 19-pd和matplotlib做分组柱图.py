@@ -17,7 +17,7 @@ ax = plt.gca()
 ax.set_xticklabels(data.NAME, rotation=45, ha="right")
 # 让图形显示全
 # plt.tight_layout()
-# 单独调整图形显示的属性,让图形显示全
+# 单独调整图形显示的属性,让图形显示全，gcf是获取当前图形的缩写
 f = plt.gcf()
-f.subplots_adjust(left=0.12, bottom=0.2)
+f.subplots_adjust(left=0.12, bottom=0.2)  # 调整图的左边界和底部边界
 plt.show()
