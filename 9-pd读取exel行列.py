@@ -4,6 +4,10 @@ import pandas as pd
 data = pd.read_excel("5G.xlsx", sheet_name="N78_15kHz")
 print(data.head())
 
+# 可以获取到所有表的名字
+data = pd.read_excel("pd操作.xlsx", None)
+print(data.keys())
+
 # 通过索引获取指定表单数据
 data2 = pd.read_excel("5G.xlsx", sheet_name=0)
 print(data2.head())
