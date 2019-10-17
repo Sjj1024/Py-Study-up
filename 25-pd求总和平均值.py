@@ -22,6 +22,16 @@ data = data.append(col_mean, ignore_index=True)
 print(data)
 
 
+import pandas as pd
+
+
+# 让数据全部显示在控制台
+pd.options.display.max_columns = 99
+data = pd.read_excel("pd操作.xlsx")
+# 旋转操作
+table = data.transpose()
+print(table)
+
       Name  Score1  Score2     Score3         Sum         Avg
 0    lisi1    62.0    82.0  92.000000  236.000000  236.000000
 1    lisi2    63.0    81.0  83.000000  227.000000  227.000000
