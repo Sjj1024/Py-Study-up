@@ -15,6 +15,7 @@ data['Sum'] = row_sum
 data['Avg'] = row_avg
 
 col_mean = data[["Score1", "Score2", "Score3", "Sum", "Avg"]].mean()
+col_mean['Name'] = "总和"
 data = data.append(col_mean, ignore_index=True)
 
 print(data)
