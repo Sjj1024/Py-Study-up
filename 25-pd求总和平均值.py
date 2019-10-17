@@ -14,6 +14,7 @@ row_avg = temp.sum(axis=1)
 data['Sum'] = row_sum
 data['Avg'] = row_avg
 
+# 求出来列的平均值，然后添加到原表数据中
 col_mean = data[["Score1", "Score2", "Score3", "Sum", "Avg"]].mean()
 col_mean['Name'] = "总和"
 data = data.append(col_mean, ignore_index=True)
