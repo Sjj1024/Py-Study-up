@@ -42,3 +42,11 @@ print(data2.columns.values)
 
 # 获取指定列的值
 print(data2['offsetToPointA'].values)
+
+
+import pandas as pd
+
+
+# 使用pd导入txt数据,不论是txt，还是csv，都是read_csv方式
+data = pd.read_csv("pd操作.txt", sep="\t", index_col="ID")
+print(data)
