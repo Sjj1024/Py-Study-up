@@ -1,4 +1,4 @@
-1. 增加一个获取路径的方法，将原py中使用os.path路径的地方，都改成这种，
+1. 增加一个获取路径的方法，将原py中使用os.path路径的地方，都改成这种，哪个文件导入这个方法，返回的直接是哪个文件的目录
 import os
 import sys
 
@@ -22,8 +22,8 @@ block_cipher = None
 a = Analysis(['start.py'],
              pathex=['D:\\Py_main\\breeze'],
              binaries=[],
-             datas=[('app','app')],  # 修改这里
-             hiddenimports=[],
+             datas=[('app','app'),('static','static')],  # 修改这里
+             hiddenimports=['httplib2','asn1crypto', 'backports.functools-lru-cache',],  # 这里是隐式导入包的时候，添加到这里
              hookspath=[],
              runtime_hooks=[],
              excludes=[],
