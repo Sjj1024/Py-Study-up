@@ -28,3 +28,24 @@ if __name__ == '__main__':
     w.move(600, 300)  # 设置窗体第一次出现的位置
     w.show()  # 窗体显示
     sys.exit(app.exec_())
+
+    
+    
+    
+    
+import sys
+from PyQt5.QtWidgets import QApplication, QWidget
+from PyQt5.QtGui import QIcon
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    wg = QWidget()
+    # app设置窗体图标的话，所有窗体自动使用这个额图标
+    app.setWindowIcon(QIcon("4.png"))
+    # 单独窗体设置图标的话，是对这个窗体有效，这个优先于app
+    wg.setWindowIcon(QIcon("3.png"))
+    wg.setWindowTitle("我爱你")
+
+    wg.show()
+    sys.exit(app.exec_())
