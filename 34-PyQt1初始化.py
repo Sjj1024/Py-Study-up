@@ -12,3 +12,19 @@ if __name__ == '__main__':
     mainWindow.show()  # 让窗体对象显示出来
     sys.exit(app.exec_())  # 当点击叉叉退出的时候，关闭程序
     print("niaho")
+
+    
+    
+    
+import sys
+from PyQt5.QtWidgets import QApplication, QWidget
+
+# 使用QWidget编写与一个独立的窗口
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    w = QWidget()  # 创建一个窗体对象
+    w.resize(400, 600)  # 设置窗体的大小
+    w.setWindowTitle("我喜欢你")  # 设置窗体标题
+    w.move(600, 300)  # 设置窗体第一次出现的位置
+    w.show()  # 窗体显示
+    sys.exit(app.exec_())
