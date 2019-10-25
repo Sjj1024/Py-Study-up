@@ -9,6 +9,6 @@ if __name__ == '__main__':
     mainWindow = QMainWindow()  # 这是创建窗口对象
     ui = test.Ui_MainWindow()  # 创建test中的ui对象
     ui.setupUi(mainWindow)  # 将窗口对象穿进去，因为这个方法需要这个窗体对象
-    mainWindow.show()
-    sys.exit(app.exec_())
+    mainWindow.show()  # 让窗体对象显示出来
+    sys.exit(app.exec_())  # 当点击叉叉退出的时候，关闭程序
     print("niaho")
