@@ -79,3 +79,45 @@ if __name__ == '__main__':
     wg.show()
     sys.exit(app.exec_())
 
+    
+    
+
+    
+    
+# 封装类添加点击事件
+import sys
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
+
+
+class Widgetobj(QWidget):
+    def __init__(self):
+        # 因为要使用到父类qwidget初始化方法，所以super
+        super().__init__()
+        self.initUi()
+
+    def initUi(self):
+        # 因为已经继承了Qwigdet，所以没必要再实例化一个wg对象了
+        # wg = QWidget()
+        self.setWindowTitle("我爱你")
+        # 设置gui的位置和大小的函数setGeometry,前两个是位置
+        self.setGeometry(30, 40, 400, 300)
+        # self.resize(400, 200)
+        # 设置一个按钮
+        button = QPushButton("登陆", self)
+        button.move(20, 20)
+
+        button2 = QPushButton("退出", self)
+        # connect是信号槽，这个槽里放上要执行的代码
+        # 信号源.信号.信号槽(执行代码不能加括号)
+        button2.clicked.connect(self.close)
+        button2.move(100, 20)
+        self.show()
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    # 配置窗体的都要封装
+    wg_obj = Widgetobj()
+    app.exec_()
+    # sys.exit(app.exec_())
+
