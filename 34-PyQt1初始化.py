@@ -49,3 +49,32 @@ if __name__ == '__main__':
 
     wg.show()
     sys.exit(app.exec_())
+
+    
+    
+    
+    
+    
+ # 设置提示框文字等
+import sys
+from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QToolTip
+from PyQt5.QtGui import QIcon, QFont
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+
+    wg = QWidget()
+    wg.resize(500, 600)
+    # 设置提示内容的文字大小等属性
+    QToolTip.setFont(QFont("微软雅黑", 20))
+    wg.setWindowTitle("我爱你")
+    wg.setWindowIcon(QIcon("4.png"))
+    # 设置鼠标悬停提示，基本上所有的空间都包含这个setToolTip函数
+    wg.setToolTip("我是谁，我在哪，我在干什么")
+
+    # 设置一个按钮, 名字是登陆，wg是父类容器对象
+    button = QPushButton("登陆", wg)
+    button.setToolTip("请输入账号")  # 设置这个按钮的提示框
+
+    wg.show()
+    sys.exit(app.exec_())
