@@ -65,7 +65,7 @@ if __name__ == '__main__':
 
     wg = QWidget()
     wg.resize(500, 600)
-    # 设置提示内容的文字大小等属性
+    # 设置提示内容的文字大小等属性, 显示的内容等都是在QTGui中的
     QToolTip.setFont(QFont("微软雅黑", 20))
     wg.setWindowTitle("我爱你")
     wg.setWindowIcon(QIcon("4.png"))
@@ -78,3 +78,4 @@ if __name__ == '__main__':
 
     wg.show()
     sys.exit(app.exec_())
+
