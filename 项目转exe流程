@@ -23,7 +23,11 @@
 1、所有路径使用相对路径，
 2、复制Confige文件的复制的是app目录下的，不然报错找不到app下的文件夹
 3、打包完成后，再调用我的删除用户临时根目录的方法：带上user_root参数
+4、生成唯一id的方法：
+import uuid
 
+uuid_num = str(uuid.uuid1()).split("-")[0]
+print(uuid_num)
 )
 
 
