@@ -35,15 +35,3 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     mc = MyClass()
     app.exec_()
-    
-    
-    
-    
-    
-    
- C:\Users\swx829949\Envs\py_study\Scripts\python.exe D:/Pyup_study/PyQT学习/pyqt消息盒子/qt消息盒子.py
-关闭窗体的操作
-关闭窗体的操作
-关闭窗体的操作
-
-Process finished with exit code 0
