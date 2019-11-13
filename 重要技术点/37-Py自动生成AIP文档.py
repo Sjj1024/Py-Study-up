@@ -71,6 +71,13 @@ source files. Use the Makefile to build the docs, like so:
    make builder
 where "builder" is one of the supported builders, e.g. html, latex or linkcheck.
 
+#在此处修改config.py文档的内容:
+配置conf.py
+在source/conf.py文件中加入如下代码， 导入自己的项目路径
+
+import os
+import sys
+sys.path.insert(0, os.path.abspath('./../../code'))
 
 D:\Breeze2\breezeApi\src\doc>sphinx-apidoc -o ./source ../../src/
 Creating file ./source\demo1.rst.
