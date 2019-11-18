@@ -26,6 +26,19 @@ def pack_zip(file_list):
         f.close()
 
 
+def extractzip():
+    ziplist = os.listdir("packzip")
+    source_path = os.path.join(os.path.dirname(__file__), "source")
+    if not os.path.exists(source_path):
+        os.makedirs(source_path)
+    for i in ziplist:
+        i = "./packzip/" + i
+        f = zipfile.ZipFile(i, 'r')
+        f.extractall(source_path)
+        f.close()
+
+
 if __name__ == '__main__':
-    filelist = find_file()
-    pack_zip(filelist)
+    # filelist = find_file()
+    # pack_zip(filelist)
+    extractzip()
