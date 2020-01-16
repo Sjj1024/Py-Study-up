@@ -1,0 +1,17 @@
+
+class Runthread(QThread):
+    sigout = pyqtSignal(int)
+
+    def __init__(self, Jx_obj):
+        super(Runthread, self).__init__()
+        self.jx_obj = Jx_obj
+        self.loss_jx_obj = Jx_obj.jx_obj
+
+    def __del__(self):
+        self.wait()
+
+    def run(self):
+        for i in self.jx_obj.sw_obj.jx_loss(self.loss_jx_obj, int(self.jx_obj.fre_start), int(self.jx_obj.fre_ends),
+                                            int(self.jx_obj.fre_spec), self.jx_obj.jx_road, self.jx_obj.loss_file_name):
+            self.sigout.emit(i + 10)  # 信号发送
+        self.jx_obj.jx_end_change()
