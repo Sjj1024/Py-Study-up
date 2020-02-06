@@ -49,7 +49,8 @@ exe = EXE(pyz,
           console=True )
 
 3.第三步：使用spec文件打包exe
-
 pyinstaller -F start.spec
+
+4.添加参数 -W 生成的exe不会带黑窗后
 
  

@@ -1,7 +1,17 @@
-dict1 = {'1': 'A', '2': 'B', '3': 'C', '4': 'D', '5': 'E', '6': 'F', '7': 'G', '8': 'H', '9': 'I', '10': 'J',
-         '11': 'K', '12': 'L', '13': 'M', '14': 'N', '15': 'O', '16': 'P', '17': 'Q', '18': 'R'}
-st1 = ''
-for kay, value in dict1.items():
-    st1 += f"{kay},{value}"+'\n'
-with open('1.txt', 'w+') as f:
-    f.write(st1)
+import os
+import re
+
+
+def re_name():
+    res_list = os.listdir(".")
+    mp4_list = [i for i in res_list if i.endswith(".mp4")]
+    re_res = re.compile(r"\(.*?\)")
+    for x in mp4_list:
+        res = re_res.search(x).group()
+        new_name = x.replace(res, "")
+        os.renames(x, new_name)
+        print(f"文件{x}已经替换成{new_name}--->")
+
+
+if __name__ == '__main__':
+    re_name()
