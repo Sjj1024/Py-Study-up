@@ -2,7 +2,9 @@ import asyncio
 import time
 import functools
 
-
+"""
+参考文章:https://segmentfault.com/a/1190000008814676
+"""
 async def first():
     print("nihao shijie")
     await asyncio.sleep(3)
