@@ -1,6 +1,31 @@
-1. 增加一个获取路径的方法，将原py中使用os.path路径的地方，都改成这种，哪个文件导入这个方法，返回的直接是哪个文件的目录
+# 1. 增加一个获取路径的方法，将原py中使用os.path路径的地方，都改成这种，哪个文件导入这个方法，返回的直接是哪个文件的目录
 import os
 import sys
+
+# 动态打包EXE的方法，解决打包路径动态生成问题
+def package_exe(res='True'):
+    root_path = os.path.abspath(os.path.split(__file__)[0])
+    dist_path = root_path + "\\dist"
+    spec_path = root_path + "\\start.py"
+    version_path = root_path + "\\version.txt"
+    exe_name = "Breeze"
+    app_path = root_path + "\\app"
+    business_common_lib_path = root_path + "\\business_common_lib"
+    utils_path = root_path + "\\utils"
+    add_data_path = f"--add-data {app_path};app --add-data {business_common_lib_path};business_common_lib --add-data {utils_path};utils"
+    exe_path = dist_path + "\\Breeze.exe"
+    if res:
+        cmd = f"pyinstaller -F {spec_path} --distpath {dist_path} --version-file {version_path} -n {exe_name} {add_data_path}"
+        os.system(cmd)
+        while True:
+            time.sleep(3)
+            if os.path.exists(exe_path):
+                print("打包成功！")
+                return True
+            else:
+                print("打包中,请稍后------->")
+    else:
+        print("打包失败")
 
 
 def get_path():
