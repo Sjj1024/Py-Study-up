@@ -1,3 +1,5 @@
+import threading
+import time
 from threading import Timer
 
 '''
@@ -13,10 +15,13 @@ def task():
     第二个参数: 要执行的任务, 即函数
     第三个参数: 调用函数的参数(tuple)
     '''
-    t = Timer(2, task)
+    t = Timer(10, task)
     t.start()
+    # 定时任务是非阻塞的
+    for i in range(10):
+        print(f"还剩{9 - i}秒---->\r")
+        time.sleep(1)
 
 
 if __name__ == '__main__':
     task()
-
