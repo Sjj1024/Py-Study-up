@@ -11,3 +11,6 @@ https://blog.csdn.net/liuzonghao88/article/details/88429498
 
 
 python 舆情分析 数据分析 股票分析 新闻分析 情感分析 投资分析 可视化 自然语言处理 中文分词
+
+
+大数据的舆情分析与决策方法:https://zhuanlan.zhihu.com/p/57752782
