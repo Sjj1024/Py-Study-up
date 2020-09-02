@@ -14,3 +14,6 @@ python 舆情分析 数据分析 股票分析 新闻分析 情感分析 投资�
 
 
 大数据的舆情分析与决策方法:https://zhuanlan.zhihu.com/p/57752782
+
+
+openstack
