@@ -21,3 +21,6 @@ openstack
 kafka 
 
 python opencv;https://www.jiqizhixin.com/articles/2019-03-22-10
+
+
+opencv不错：https://www.cnblogs.com/silence-cho/p/10926248.html
