@@ -29,3 +29,4 @@ opencv不错：https://www.cnblogs.com/silence-cho/p/10926248.html
 vue.js中created方法作用：https://www.jb51.net/article/137438.htm
 
 Qt5教程: (9) Qt多线程：https://www.cnblogs.com/raina/p/12050017.html
+https://www.cnblogs.com/raina/tag/Qt/
