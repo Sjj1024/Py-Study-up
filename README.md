@@ -26,3 +26,5 @@ python opencv;https://www.jiqizhixin.com/articles/2019-03-22-10
 opencv不错：https://www.cnblogs.com/silence-cho/p/10926248.html
 
 苹果手机投屏到mac：https://www.jianshu.com/p/4cf08bda8f60
+
+vue.js中created方法作用：https://www.jb51.net/article/137438.htm
