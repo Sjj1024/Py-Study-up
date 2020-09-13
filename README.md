@@ -1,9 +1,6 @@
 # Py-Study-up
 Python技能提高总结
 
-pandas保存数据：
-https://blog.csdn.net/liuzonghao88/article/details/88429498
-
 
 添加opencv学习文件夹
 
@@ -30,14 +27,5 @@ python opencv;https://www.jiqizhixin.com/articles/2019-03-22-10
 opencv不错：https://www.cnblogs.com/silence-cho/p/10926248.html
 
 
-vue.js中created方法作用：https://www.jb51.net/article/137438.htm
-
-Qt5教程: (9) Qt多线程：https://www.cnblogs.com/raina/p/12050017.html
-
-
 https://www.cnblogs.com/raina/tag/Qt/
 
-
-QT-多线程与界面之间交互总结：https://www.cnblogs.com/lifexy/p/10907901.html
-
-https://www.cnblogs.com/lifexy/category/1121070.html
