@@ -20,6 +20,10 @@ openstack
 
 kafka 
 
+高并发
+
+flask
+
 python opencv;https://www.jiqizhixin.com/articles/2019-03-22-10
 
 
