@@ -29,3 +29,11 @@ opencv不错：https://www.cnblogs.com/silence-cho/p/10926248.html
 
 https://www.cnblogs.com/raina/tag/Qt/
 
+
+前端layui：
+https://www.layui.com/demo/
+
+后台模板：
+http://x.xuebingsi.com/index/theme/item/49.html
+
+
