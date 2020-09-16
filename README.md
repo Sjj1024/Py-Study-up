@@ -36,4 +36,5 @@ https://www.layui.com/demo/
 后台模板：
 http://x.xuebingsi.com/index/theme/item/49.html
 
+JSON.stringify 语法讲解：https://www.cnblogs.com/damonlan/archive/2012/03/13/2394787.html
 
